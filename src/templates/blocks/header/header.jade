@@ -1,0 +1,74 @@
+mixin header()
+  .svg-sprite
+    include ../sprite/svg.svg
+  .table-of-contents
+    i.toc-icon
+      svg(width="20" height="20")
+        use(xlink:href="#toc-icon")
+  .toc-container
+    .toc-close
+      svg(width="20" height="20")
+        use(xlink:href="#close-icon")
+    ul.toc-nav
+      li
+        h3.toc-header HTML
+      li
+        a.toc-nav__link(href="#h-syntax") Синтаксис
+      li
+        a.toc-nav__link(href="#h-valid") Валидность
+      li
+        a.toc-nav__link(href="#h-doctype") HTML-доктайп
+      li
+        a.toc-nav__link(href="#h-encoding") Кодировка символов
+      li
+        a.toc-nav__link(href="#h-styles") Подключение стилей
+      li
+        a.toc-nav__link(href="#h-scripts") Подключение скриптов
+      li
+        a.toc-nav__link(href="#h-attr") Порядок атрибутов
+      li
+        a.toc-nav__link(href="#h-logical") Логические атрибуты
+      li
+        a.toc-nav__link(href="#h-inputs") Подписи полей ввода
+      li
+        a.toc-nav__link(href="#h-images") Размеры картинок
+      li
+        a.toc-nav__link(href="#h-lang") Атрибут языка
+      li
+        a.toc-nav__link(href="#h-good") Правила хорошего тона
+      li
+        a.toc-nav__link(href="#h-secrets") Пара секретов
+      li
+        h3.toc-header CSS
+      li
+        a.toc-nav__link(href="#c-syntax") Синтаксис
+      li
+        a.toc-nav__link(href="#c-order") Порядок свойств
+      li
+        a.toc-nav__link(href="#c-classnames") Имена классов
+      li
+        a.toc-nav__link(href="#c-why-bem") Почему БЭМ?
+      li
+        a.toc-nav__link(href="#c-bem-block") БЭМ-блок
+      li
+        a.toc-nav__link(href="#c-bem-element") БЭМ-элемент
+      li
+        a.toc-nav__link(href="#c-bem-mod") БЭМ-модификатор
+      li
+        a.toc-nav__link(href="#c-bem-mix") БЭМ-миксование
+      li
+        a.toc-nav__link(href="#c-bem-files") Организация БЭМ файлов
+      li
+        a.toc-nav__link(href="#c-nesting") Вложения Селекторов
+      li
+        a.toc-nav__link(href="#c-media-q") Медиа-запросы
+      li
+        a.toc-nav__link(href="#c-ampersand") Амперсанд
+      li
+        h3.toc-header Git
+      li
+        a.toc-nav__link(href="#g-naming") Именование коммитов
+      li
+        a.toc-nav__link(href="#g-fuck") Ошибки Git
+  header
+    h1 Стиль кода Softgrad

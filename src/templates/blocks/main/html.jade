@@ -1,0 +1,281 @@
+mixin html()
+  h2 HTML
+
+  h3#h-syntax Синтаксис
+
+  p Для отступов у вложенных элементов используются два пробела. Для правильного форматирования используйте файл #[a(href="https://github.com/htmlacademy/codeguide/blob/master/.editorconfig" target="_blank") .editorconfig] в вашем редакторе.
+
+  p Теги и их атрибуты пишутся строчными буквами. Для значений атрибутов всегда используются двойные кавычки.
+
+  p Необязательный закрывающий слеш у одиночных тегов (#[span.code &lt;img&gt;], #[span.code &lt;br&gt;] и другие) не ставится.
+    span.as
+    span.br  (
+    span.mark Необходимость в закрывающем слеше отпала согласно
+      a(href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag" target="_blank")  спецификации
+    span.br )
+
+  p Необязательные закрывающие теги (например,
+      span.code &lt;/li&gt;
+      |  или
+      span.code &lt;/body&gt;
+      | ) не пропускаются.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>
+              <meta charset="utf-8">
+              <title>Правильная страница</title>
+            </head>
+            <body>
+               <article class="post">
+                 <h1>Красивый заголовок</h1>
+               </article>
+            </body>
+          </html>
+
+  h3#h-valid Валидность
+
+  p Документ должен проходить проверку на валидность. Для проверки используется современный #[a(href="http://validator.w3.org/nu/" target="_blank") валидатор].
+
+  h3#h-doctype HTML-доктайп
+
+  p В начале страницы обязательно должен быть указан актуальный #[span.code doctype]
+    | , чтобы браузер отображал её в режиме соответствия стандартам. Это гарантирует, что страница будет выглядеть единообразно во всех современных браузерах.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>…</head>
+            <body>…</body>
+          </html>
+
+  h3#h-encoding Кодировка символов
+
+  p Кодировка символов на странице всегда должна быть явно указана, чтобы обеспечить корректное отображение текста. Кодировка #[span.code utf-8] предпочтительна.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <head>
+            <meta charset="utf-8">
+            <title>Заголовок страницы</title>
+          </head>
+
+  h3#h-styles Подключение стилей
+
+  p Стилевые файлы с помощью #[span.code &lt;link&gt;] подключаются внутри #[span.code &lt;head&gt;].
+    |  При этом атрибут #[span.code type] для тега #[span.code &lt;link&gt;] не указывается, так как его значение #[span.code text/css] устанавливается по умолчанию.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!-- Хорошо: стилевой файл подключён в секции head -->
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>
+              <link rel="stylesheet" href="style.css">
+            </head>
+            <body>…</body>
+          </html>
+
+          <!-- Плохо: стилевой файл подключён в секции body -->
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>…</head>
+            <body>
+              <link rel="stylesheet" href="style.css">
+            </body>
+          </html>
+
+  h3#h-scripts Подключение скриптов
+
+  p Скрипты должны подключаться в самом низу страницы, чтобы при её загрузке не блокировать отображение содержимого.
+
+  p При подключении скриптов в теге #[span.code &lt;script&gt;] атрибут #[span.code type] не указывается, так как его значение #[span.code text/javascript]
+    |  устанавливается по умолчанию.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!-- Хорошо: скрипт подключается перед </body> -->
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>…</head>
+            <body>
+              <!-- Содержимое страницы -->
+              <script src="app.js"></script>
+            </body>
+          </html>
+
+          <!-- Плохо: скрипт подключается в секции <head> -->
+          <!DOCTYPE html>
+          <html lang="ru">
+            <head>
+              <script src="app.js"></script>
+            </head>
+            <body>…</body>
+          </html>
+
+  h3#h-attr Порядок атрибутов
+
+  p Атрибут класса у HTML-элементов пишется первым. Единообразное написание помогает легче считывать код и быстрее разбираться в назначении блоков по их классам.
+
+  p Остальные атрибуты могут быть расставлены в любом порядке, но тоже единообразно для одинаковых элементов.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <a class="element element-big" id="element" href="/" data-name="element">Ссылка</a>
+
+          <input class="form-control" type="text" name="test">
+
+          <img class="pets-picture" src="cats.jpg" alt="Изображение котиков">
+
+  h3#h-logical Логические атрибуты
+
+  p Для логических атрибутов (например, #[span.code checked], #[span.code disabled], #[span.code required]) значение не указывается, а сами атрибуты указываются последними и в единообразной последовательности во всём документе.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!-- checked="checked" необязательно -->
+          <input type="checkbox" required checked>
+
+          <input type="text" disabled>
+
+          <select>
+            <option value="1" selected>1</option>
+          </select>
+
+  h3#h-inputs Подписи полей ввода
+
+  p Для улучшения взаимодействия пользователя с элементами форм, при нажатии на подпись поля, оно должно активироваться. Для этого элемент формы связывается с его описанием с помощью идентификатора и атрибута #[span.code for] тега #[span.code &lt;label&gt;].
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!-- Хорошо: элемент формы radio связан с подписью через идентификатор -->
+          <input type="radio" id="choose">
+          <label for="choose">Радио кнопка</label>
+
+          <!-- Хорошо: элемент формы radio и подпись обёрнуты в label -->
+          <label>
+            <input type="radio"> Радио кнопка
+          </label>
+
+          <!-- Плохо: подпись не связана с элементом формы -->
+          <input type="radio" id="choose"> Радио кнопка
+
+  h3#h-images Размеры картинок
+
+  p Изображениям #[span.code &lt;img&gt;] должны быть явно заданы с помощью атрибута размеры в пикселях или в процентах. В случае пикселей размерность не нужна.
+
+  p По возможности изображениям указываются действительные размеры, так как это улучшает производительность отрисовки страницы: браузер не будет перерисовывать страницу в процессе загрузки и отображения изображения.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <!-- Хорошо: размеры картинке заданы -->
+          <div class="logo">
+            <img src="logo.png" alt="" width="300" height="150">
+          </div>
+
+          <!-- Плохо: размеры картинке заданы в px -->
+          <div class="logo">
+            <img src="logo.png" alt="" width="300px" height="150px">
+          </div>
+
+          <!-- Плохо: размеры картинке не заданы -->
+          <div class="logo">
+            <img src="logo.png" alt="">
+          </div>
+
+  h3#h-lang Атрибут языка
+
+  p Для элемента #[span.code &lt;html&gt;] в атрибуте #[span.code lang] должен указываться соответствующий язык документа. Это помогает инструментам синтеза речи определить, какое использовать произношение или системам перевода, какие использовать языковые правила.
+
+  h3#h-good Правила хорошего тона
+
+  p Нижесказанное не обязательно к исполнению, но применение этих правил позволит вам прослыть крутым специалистом.
+
+  p Отбивайте блоки кода друг от друга пустой строкой. Так легче визуально вопринимать структуру документа.
+
+  p Не надо писать в #[span.code html] комментарии. Исключение можно сделать только для комментария об окончании какого-то блока.
+    span.as
+    span.br  (
+    span.mark Структура документа должна говорить сама за себя без комментариев. Если вам нужны комментарии - надо переписать код
+    span.br )
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          <div class="video-player">
+            ...
+          </div>
+
+          <div class="comment-list">
+            ...
+          </div> <!--end comment-list-->
+
+  h3#h-secrets И еще пара секретов
+
+  p Не используйте стилевые тэги #[span.code &lt;bold&gt;], #[span.code &lt;hr&gt;] и т.д.
+
+  p Не пишите javascript инлайн
+
+  p Помните, HTML это структура, а не стили и поведение.

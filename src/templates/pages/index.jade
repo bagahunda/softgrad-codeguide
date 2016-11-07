@@ -1,0 +1,16 @@
+include ../../../node_modules/bemto.jade/bemto
+- set_bemto_settings({ modifier: '--' })
+
+include ../blocks/scripts/scripts
+
+include ../blocks/header/header
+include ../blocks/main/main
+
+doctype html
+html(lang='ru')
+  include ../blocks/head/head
+  body
+    +header()
+    +main()
+    block scripts
+    +scripts(['https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', 'build.js'])

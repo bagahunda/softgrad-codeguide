@@ -1,0 +1,58 @@
+.main
+  background: url('../images/body-bg.jpg') 50% 0
+
+  h2
+    padding: 1.2em 0em 1.2em
+    font-style: italic
+    color: #666
+    text-align: center
+
+
+  h3
+    color: #888
+
+
+p + h3,
+.code-block + h3
+  padding: 1.42857em 0em 0em
+
+.as:after
+  @media screen and (min-width: 1000px)
+    content: '*'
+    color: red
+
+
+.br
+
+  @media screen and (min-width: 1000px)
+    display: none
+
+
+.mark
+
+  @media screen and (min-width: 1000px)
+    font-size: 0.93rem
+    font-style: italic
+    position: absolute
+    left: 100%
+    width: 300px
+    padding: 0 2em
+    color: #a0a0a0
+
+    &:before
+      content: '* '
+      color: red
+
+    &:after
+      content: '.'
+
+
+.table-of-contents
+  position: fixed
+  top: 1rem
+  left: 1rem
+  cursor: pointer
+  // display: none
+
+.toc-icon
+  display: inline-block

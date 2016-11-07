@@ -1,0 +1,13 @@
+include html.jade
+include css.jade
+include git.jade
+mixin main()
+  +b.main
+    .container
+      .main-content
+        +html()
+        +css()
+        +git()
+
+
+

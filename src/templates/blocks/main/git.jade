@@ -1,0 +1,184 @@
+mixin git()
+  h2 Git
+
+  h3#g-naming Соглашение по именованию коммитов
+  p Используется подход conventional changelog. Каждый коммит начинается с типа (type), области (scope) и сообщения (subject). В самом конце может быть описание (body) с замечанием и т.п.
+
+  ul
+    li #[span.code type] - тип изменений, который содержит коммит;
+    li #[span.code scope] - область кода, в которой производились изменения;
+    li #[span.code subject] - сообщение;
+    li #[span.code body] (не обязательно) - подробно описание изменений или важное замечание.
+
+  p Примеры:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          feat(ruler): add inches as well as centimeters
+          fix(protractor): fix 90 degrees counting as 91 degrees
+          refactor(pencil): use graphite instead of lead
+
+          Closes #640.
+
+          Graphite is a much more available resource than lead, so we use it to lower the price.
+          fix(pen): use blue ink instead of red ink
+
+          BREAKING CHANGE: Pen now uses blue ink instead of red.
+
+          To migrate, change your code from the following:
+
+          `pen.draw('blue')`
+
+          To:
+
+          `pen.draw('red')`
+
+  p Каждая строка в коммите может содержать не более 100 символов.
+  p Типы коммитов:
+
+  ul
+    li #[span.code feat] - новая фича;
+    li #[span.code fix] - исправление ошибки;
+    li #[span.code docs] - изменения в документации;
+    li #[span.code style] - форматирование кода или любые другие изменения, не влияющие на работу кода;
+    li #[span.code refactor] - изменения в коде, которые не относятся к фиксам или фиче;
+    li #[span.code test] - добавлен или обновлён тест;
+    li #[span.code core] - измененения в сборщике, зависимостях и т.п.
+
+  p Сообщения
+
+  ul
+    li Только английский язык, никакого транслита;
+    li Используйте настоящее время, например, change, но не changed или changes;
+    li Первое слово с прописной буквы, не с заглавной;
+    li Не ставьте точку в конце.
+
+  h2#g-fuck Git, твою мать
+  p Распространённые ошибки при работе с Git, и что с ними делать
+
+  h3 Твою мать, я накосячил. Пожалуйста, можно вернуть всё обратно!?!
+
+  p Спасение:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          git reflog
+          # эта команда покажет вам всё, что вы делали во всех бранчах!
+          # у каждой записи есть идентификатор HEAD@{index}
+          # укажем тот, что находится перед тем, как вы всё поломали
+          git reset HEAD@{index}
+          # волшебство
+
+  p Таким образом можно вернуть случайно удалённые файлы, или убрать неверный код, или восстановиться после некорректного слияния, или просто вернуться назад во времени к тому моменту, когда всё работало.
+
+  h3 Твою мать, я сделал комит и вдруг понял, что забыл внести изменение!
+
+  p Спасение:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          # сделаем необходимые изменения
+          git add .
+          git commit --amend
+          # следуем указаниям для изменения сообщения комита или оставьте как есть
+          # теперь в вашем комите все изменения!
+
+  p Такое случается очень часто. Вы сделали комит и вдруг поняли, что забыли что-то, или обнаружили ошибку в коде. Можно решить эту проблему иначе: сделать новый комит, а затем сделать rebase -i (чтобы объединить комиты в один), но способ, указанный выше, работает в миллион раз быстрее.
+
+  h3 Твою мать, надо поменять сообщение последнего комита!
+
+  p Спасение:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          git commit --amend
+
+  p Да, вот так просто. И будьте внимательней.
+
+  h3 Твою мать, я сделал комит в бранч master, а надо было сделать новый бранч!
+
+  p Спасение:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          # создадим новый бранч
+          git branch some-new-branch-name
+          # удалим ваш комит из бранча master
+          git reset HEAD~ --hard
+          git checkout some-new-branch-name
+          # теперь ваш комит только в нужном бранче :)
+
+  p Помните: это актуально только для локальных комитов, для которых не выполнялся push, и только если вы не пытались как-то иначе решить проблему.
+
+  h3 Твою мать, я сделал комит не в тот бранч!
+
+  p Спасение:
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          # отменим последний комит, но сохраним изменения
+          git reset HEAD~ --soft
+          git stash
+          # переходим в нужный бранч
+          git checkout name-of-the-correct-branch
+          git stash pop
+          git add .
+          git commit -m "your message here"
+          # теперь всё в нужном бранче
+
+  p Многие в такой ситуации предпрочитают использовать cherry-pick. Выберите сами, какой метод вам по душе.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-markup
+        :code
+          git checkout name-of-the-correct-branch
+          # возьмём последний комит из master
+          git cherry-pick master
+          # а затем удалим последний комит из master
+          git checkout master
+          git reset HEAD~ --hard
+
+
+
+

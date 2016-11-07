@@ -1,0 +1,193 @@
+html
+  box-sizing border-box
+
+*,
+*:before,
+*:after
+  box-sizing inherit
+
+:disabled, [disabled], [aria-disabled="true"]
+  cursor not-allowed
+
+
+
+.svg-sprite
+  display none
+
+
+body
+  color: #000
+  font-family: "Pt Serif"
+  font-size: 1.187rem
+  line-height: 1.631
+
+body.menu--shown
+  overflow: hidden
+
+.container
+  max-width: 31em
+  margin: 0 auto
+  @media screen and (min-width: 1000px)
+    max-width: 1000px
+
+
+.main-content
+  position: relative
+  padding: 0 2em
+  @media screen and (min-width: 1000px)
+    max-width: 700px
+    padding-right: 0
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin: 0
+
+h1
+  font-size: 2rem
+  /* 2x body copy size = 32px */
+  line-height: 1.25
+  /* 45px / 36px */
+
+@media (min-width: 700px)
+  h1
+    font-size: 2.5rem
+    /* 2.5x body copy size = 40px */
+    line-height: 1.125
+
+
+@media (min-width: 900px)
+  h1
+    font-size: 3rem
+    /* 3x body copy size = 48px */
+    line-height: 1.05
+    /* keep to a multiple of the 20px line height
+    and something more appropriate for display headings */
+
+
+h2
+  font-size: 1.625rem
+  /* 1.625x body copy size = 26px */
+  line-height: 1.15384615
+  /* 30px / 26px */
+
+@media (min-width: 700px)
+  h2
+    font-size: 2rem
+    /* 2x body copy size = 32px */
+    line-height: 1.25
+
+
+@media (min-width: 900px)
+  h2
+    font-size: 2.25rem
+    /* 2.25x body copy size = 36px */
+    line-height: 1.25
+
+
+h3
+  font-size: 1.375rem
+  /* 1.375x body copy size = 22px */
+  line-height: 1.13636364
+  /* 25px / 22px */
+  display: inline-block
+  position: relative
+
+@media (min-width: 700px)
+  h3
+    font-size: 1.5rem
+    /* 1.5x body copy size = 24px */
+    line-height: 1.25
+
+
+@media (min-width: 900px)
+  h3
+    font-size: 1.75rem
+    /* 1.75x body copy size = 28px */
+    line-height: 1.25
+
+
+p
+  margin: 0
+  padding: 0.83333em 0em 0.83333em
+
+.code-block + p
+  padding-top: 1.42857em
+
+a[href]:not([class])
+  color: #156f8f
+  text-decoration: none
+  border-bottom: 1px solid rgba(21, 111, 143, 0.2)
+  transition: all 0.3s ease-in-out
+
+  &:hover
+    color: #0c4255
+    border-bottom: 1px solid rgba(12, 66, 85, 0.3)
+
+
+ul
+  margin: 0 0 0.83333em
+
+h3 + ul
+  margin-top: 0.83333em
+
+pre[class*="language-"]
+  border-radius: 0
+  border: none
+  border-bottom-left-radius: 3px
+  border-bottom-right-radius: 3px
+  box-shadow: none
+  margin: 0
+  background: #222
+  font-size: 1rem
+  margin-top: -1px
+
+.code-block
+  margin-bottom: 0.83333em
+
+.code-block__header
+  display: flex
+  height: 28px
+  background: #000
+  padding-left: 0.75em
+  position: relative
+  border-top-left-radius: 3px
+  border-top-right-radius: 3px
+
+code[class*="language-"],
+pre[class*="language-"]
+  text-shadow: none
+
+.circle
+  width: 12px
+  height: 12px
+  border-radius: 50%
+  margin: auto 8px auto 0
+  background: #e7e7e7
+  &:first-child
+    background: #EB5C55
+
+  &:nth-child(2)
+    background: #F7BF33
+
+  &:last-child
+    background: #6ACC45
+
+
+span.code
+  color: red
+  background: #F7F7F9
+  border-radius: 3px
+  padding: 2px 4px
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+
+i
+  display: inline-block
+
+.search
+  fill: red
+
