@@ -1,5 +1,5 @@
 const gulp     = require('gulp');
-const jadeJade = require('jade')
+const jadeJade = require('jade');
 const $        = require('gulp-load-plugins')();
 
 const data = {
