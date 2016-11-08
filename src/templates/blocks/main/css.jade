@@ -449,3 +449,33 @@ mixin css()
             &--large { ... }
 
           }
+
+  h3 REM и мобильная версия Сафари
+
+  p Несмотря на то, что мобильная версия сафари поддерживает еденицу измерения rem, есть одно исключение. При использовании rem в медиа-запросах мобильная версия Сафари ведёт себя неадекватно.
+
+  +b.code-block
+    +e.header
+      span.circle
+      span.circle
+      span.circle
+    pre
+      code.language-css
+        :code
+          html {
+            font-size: 16px;
+          }
+
+          /* Работает неправильно в мобильной версии Сафари */
+          @media (min-width: 40rem) {
+            html {
+              font-size: 20px;
+            }
+          }
+
+          /* Работает правильно */
+          @media (min-width: 40em) {
+            html {
+              font-size: 20px;
+            }
+          }
